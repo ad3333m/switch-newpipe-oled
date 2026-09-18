@@ -1,0 +1,55 @@
+<!--
+    Channel / related / playlist results. Same header-rule-grid shape as the
+    tabs, so pushing into a feed from the detail screen does not land on a
+    differently styled page.
+-->
+<brls:AppletFrame
+    headerHidden="true"
+    footerHidden="false">
+    <brls:Box
+        width="100%"
+        height="100%"
+        axis="column"
+        paddingTop="18"
+        paddingLeft="24"
+        paddingRight="24">
+
+        <brls:Label
+            id="feed/status"
+            width="auto"
+            height="30"
+            singleLine="true"
+            text="Feed"
+            fontSize="22"
+            textColor="@theme/color/newpipe_text" />
+
+        <brls:Label
+            id="feed/subtitle"
+            width="auto"
+            height="18"
+            marginTop="4"
+            singleLine="true"
+            text=""
+            fontSize="13"
+            textColor="@theme/color/newpipe_text_faint" />
+
+        <brls:Rectangle
+            width="auto"
+            height="1"
+            marginTop="10"
+            marginBottom="14"
+            color="@theme/color/newpipe_divider" />
+
+        <brls:ScrollingFrame
+            id="feed/scroll"
+            width="auto"
+            grow="1.0">
+
+            <StreamGrid
+                id="feed/grid"
+                width="auto"
+                height="auto" />
+
+        </brls:ScrollingFrame>
+    </brls:Box>
+</brls:AppletFrame>

@@ -1,0 +1,77 @@
+<!--
+    Header, a one-line subtitle for state/controls, then the card grid.
+
+    The subtitle is capped at two lines and ellipsised: it carries long
+    multi-line help text in some states, and letting it grow used to push the
+    grid off the bottom of the screen.
+-->
+<brls:Box
+    width="auto"
+    height="auto"
+    axis="column"
+    paddingTop="18"
+    paddingLeft="24"
+    paddingRight="24">
+
+    <brls:Box
+        width="auto"
+        height="32"
+        axis="row"
+        alignItems="center">
+
+        <brls:Label
+            id="library/status"
+            grow="1.0"
+            width="auto"
+            height="auto"
+            singleLine="true"
+            text="Library"
+            fontSize="21"
+            textColor="@theme/color/newpipe_text" />
+
+        <brls:ProgressSpinner
+            id="library/spinner"
+            width="22"
+            height="22"
+            marginLeft="12"
+            visibility="gone" />
+    </brls:Box>
+
+    <brls:Label
+        id="library/body"
+        width="auto"
+        height="auto"
+        maxHeight="44"
+        marginTop="4"
+        lineHeight="1.35"
+        text="SUBLibrary"
+        fontSize="14"
+        textColor="@theme/color/newpipe_text_dim" />
+
+    <brls:Rectangle
+        width="auto"
+        height="1"
+        marginTop="10"
+        marginBottom="14"
+        color="@theme/color/newpipe_divider" />
+
+    <!-- Nothing to page through here, but the same frame keeps the tabs identical. -->
+    <PagingScrollingFrame
+        id="library/scroll"
+        width="auto"
+        grow="1.0">
+
+        <brls:Box
+            width="auto"
+            height="auto"
+            axis="column">
+
+            <StreamGrid
+                id="library/grid"
+                width="auto"
+                height="auto" />
+        </brls:Box>
+
+    </PagingScrollingFrame>
+
+</brls:Box>

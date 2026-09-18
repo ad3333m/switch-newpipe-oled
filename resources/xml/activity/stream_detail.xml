@@ -1,0 +1,87 @@
+<!--
+    The title is allowed to wrap - it is the point of this screen - but it is
+    capped so a very long one cannot push the description off the bottom. The
+    meta and control-hint rows are single line: they are reference text, and
+    letting them wrap was what pushed the description out of view.
+-->
+<brls:AppletFrame
+    headerHidden="true"
+    footerHidden="false">
+    <brls:Box
+        width="100%"
+        height="100%"
+        axis="column"
+        paddingTop="18"
+        paddingLeft="24"
+        paddingRight="24">
+
+        <brls:Box
+            width="auto"
+            height="auto"
+            axis="row"
+            alignItems="flexStart">
+
+            <brls:Label
+                id="detail/title"
+                grow="1.0"
+                width="auto"
+                height="auto"
+                maxHeight="62"
+                lineHeight="1.25"
+                text="Video details"
+                fontSize="24"
+                textColor="@theme/color/newpipe_text" />
+
+            <brls:ProgressSpinner
+                id="detail/spinner"
+                width="22"
+                height="22"
+                marginLeft="12"
+                marginTop="4"
+                visibility="gone" />
+        </brls:Box>
+
+        <brls:Label
+            id="detail/meta"
+            width="auto"
+            height="20"
+            marginTop="6"
+            singleLine="true"
+            text=""
+            fontSize="15"
+            textColor="@theme/color/newpipe_text_dim" />
+
+        <brls:Label
+            id="detail/status"
+            width="auto"
+            height="18"
+            marginTop="4"
+            singleLine="true"
+            text=""
+            fontSize="13"
+            textColor="@theme/color/newpipe_text_faint" />
+
+        <brls:Rectangle
+            width="auto"
+            height="1"
+            marginTop="12"
+            marginBottom="14"
+            color="@theme/color/newpipe_divider" />
+
+        <brls:ScrollingFrame
+            width="auto"
+            grow="1.0">
+
+            <brls:Label
+                id="detail/body"
+                width="auto"
+                height="auto"
+                lineHeight="1.55"
+                marginBottom="16"
+                text=""
+                fontSize="17"
+                textColor="@theme/color/newpipe_text" />
+
+        </brls:ScrollingFrame>
+    </brls:Box>
+</brls:AppletFrame>

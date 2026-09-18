@@ -1,0 +1,73 @@
+<!--
+    Same shape as the home feed: results keep loading as the user scrolls,
+    rather than stopping dead at the first page of matches.
+-->
+<brls:Box
+    width="auto"
+    height="auto"
+    axis="column"
+    paddingTop="18"
+    paddingLeft="24"
+    paddingRight="24">
+
+    <brls:Box
+        width="auto"
+        height="32"
+        axis="row"
+        alignItems="center">
+
+        <brls:Label
+            id="search/status"
+            grow="1.0"
+            width="auto"
+            height="auto"
+            singleLine="true"
+            text="Press X to search"
+            fontSize="21"
+            textColor="@theme/color/newpipe_text" />
+
+        <brls:ProgressSpinner
+            id="search/spinner"
+            width="22"
+            height="22"
+            marginLeft="12"
+            visibility="gone" />
+    </brls:Box>
+
+    <brls:Rectangle
+        width="auto"
+        height="1"
+        marginTop="10"
+        marginBottom="14"
+        color="@theme/color/newpipe_divider" />
+
+    <PagingScrollingFrame
+        id="search/scroll"
+        width="auto"
+        grow="1.0">
+
+        <brls:Box
+            width="auto"
+            height="auto"
+            axis="column">
+
+            <StreamGrid
+                id="search/grid"
+                width="auto"
+                height="auto" />
+
+            <brls:Label
+                id="search/more"
+                width="auto"
+                height="24"
+                marginBottom="12"
+                singleLine="true"
+                horizontalAlign="center"
+                fontSize="13"
+                textColor="@theme/color/newpipe_text_faint"
+                visibility="gone" />
+        </brls:Box>
+
+    </PagingScrollingFrame>
+
+</brls:Box>

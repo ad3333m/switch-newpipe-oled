@@ -1,0 +1,9 @@
+# This repo is built inside a Linux container (build.sh -> devkitpro/devkita64).
+# A CRLF build.sh would fail with "bad interpreter", so keep the whole tree LF.
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.ico binary
+*.nro binary

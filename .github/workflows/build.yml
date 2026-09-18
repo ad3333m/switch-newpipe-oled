@@ -1,0 +1,53 @@
+name: Build NRO
+
+on:
+  push:
+    branches:
+      - "**"
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build-switch-nro:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Prepare cache directories
+        run: mkdir -p .cache/portlibs-switch
+
+      # ffmpeg + mpv are built from source for the Switch. That is the slow part
+      # of a cold build (well over an hour); every run after the first restores
+      # them from here in seconds.
+      - name: Cache Switch portlibs
+        uses: actions/cache@v4
+        with:
+          path: |
+            .cache/portlibs-switch
+          key: ${{ runner.os }}-switch-portlibs-${{ hashFiles('build.sh', 'CMakeLists.txt', 'vendor/switch-portlibs/build_custom_portlibs.sh', 'vendor/switch-portlibs/ffmpeg/**', 'vendor/switch-portlibs/mpv/**') }}
+
+      - name: Verify Docker
+        run: docker version
+
+      - name: Build Switch NRO
+        env:
+          PORTLIBS_DIR: ${{ github.workspace }}/.cache/portlibs-switch
+        run: ./build.sh
+
+      - name: Collect artifacts
+        run: |
+          mkdir -p dist
+          cp cmake-build-switch/switch_newpipe.nro dist/switch_newpipe.nro
+          sha256sum dist/switch_newpipe.nro > dist/SHA256SUMS.txt
+
+      - name: Upload NRO
+        uses: actions/upload-artifact@v4
+        with:
+          name: switch_newpipe-nro
+          path: |
+            dist/switch_newpipe.nro
+            dist/SHA256SUMS.txt

@@ -1,0 +1,77 @@
+<!--
+    Header row, hairline rule, then one continuously growing feed.
+
+    The scrolling frame is a PagingScrollingFrame so the tab is asked for the
+    next page while the bottom of the list is still off screen, and its content
+    is a wrapper box because a scrolling frame only ever holds a single child -
+    here the grid plus the footer that reports the next page landing.
+-->
+<brls:Box
+    width="auto"
+    height="auto"
+    axis="column"
+    paddingTop="18"
+    paddingLeft="24"
+    paddingRight="24">
+
+    <brls:Box
+        width="auto"
+        height="32"
+        axis="row"
+        alignItems="center">
+
+        <brls:Label
+            id="home/status"
+            grow="1.0"
+            width="auto"
+            height="auto"
+            singleLine="true"
+            text="Loading..."
+            fontSize="21"
+            textColor="@theme/color/newpipe_text" />
+
+        <brls:ProgressSpinner
+            id="home/spinner"
+            width="22"
+            height="22"
+            marginLeft="12"
+            visibility="gone" />
+    </brls:Box>
+
+    <brls:Rectangle
+        width="auto"
+        height="1"
+        marginTop="10"
+        marginBottom="14"
+        color="@theme/color/newpipe_divider" />
+
+    <PagingScrollingFrame
+        id="home/scroll"
+        width="auto"
+        grow="1.0">
+
+        <brls:Box
+            width="auto"
+            height="auto"
+            axis="column">
+
+            <StreamGrid
+                id="home/grid"
+                width="auto"
+                height="auto" />
+
+            <brls:Label
+                id="home/more"
+                width="auto"
+                height="24"
+                marginBottom="12"
+                singleLine="true"
+                horizontalAlign="center"
+                fontSize="13"
+                textColor="@theme/color/newpipe_text_faint"
+                visibility="gone" />
+        </brls:Box>
+
+    </PagingScrollingFrame>
+
+</brls:Box>

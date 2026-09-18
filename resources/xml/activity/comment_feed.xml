@@ -1,0 +1,49 @@
+<!-- Same header-rule-content shape as every other screen. -->
+<brls:AppletFrame
+    headerHidden="true"
+    footerHidden="false">
+    <brls:Box
+        width="100%"
+        height="100%"
+        axis="column"
+        paddingTop="18"
+        paddingLeft="24"
+        paddingRight="24">
+
+        <brls:Label
+            id="comments/title"
+            width="auto"
+            height="30"
+            singleLine="true"
+            text="Comments"
+            fontSize="22"
+            textColor="@theme/color/newpipe_text" />
+
+        <brls:Label
+            id="comments/subtitle"
+            width="auto"
+            height="18"
+            marginTop="4"
+            singleLine="true"
+            text=""
+            fontSize="13"
+            textColor="@theme/color/newpipe_text_faint" />
+
+        <brls:Rectangle
+            width="auto"
+            height="1"
+            marginTop="10"
+            marginBottom="14"
+            color="@theme/color/newpipe_divider" />
+
+        <brls:ScrollingFrame
+            width="auto"
+            grow="1.0">
+            <brls:Box
+                id="comments/list"
+                width="100%"
+                height="auto"
+                axis="column" />
+        </brls:ScrollingFrame>
+    </brls:Box>
+</brls:AppletFrame>

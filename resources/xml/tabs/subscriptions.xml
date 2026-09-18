@@ -1,0 +1,87 @@
+<!--
+    Header, a one-line subtitle for state/controls, then the card grid.
+
+    The subtitle is capped at two lines and ellipsised: it carries long
+    multi-line help text in some states, and letting it grow used to push the
+    grid off the bottom of the screen.
+-->
+<brls:Box
+    width="auto"
+    height="auto"
+    axis="column"
+    paddingTop="18"
+    paddingLeft="24"
+    paddingRight="24">
+
+    <brls:Box
+        width="auto"
+        height="32"
+        axis="row"
+        alignItems="center">
+
+        <brls:Label
+            id="subscriptions/status"
+            grow="1.0"
+            width="auto"
+            height="auto"
+            singleLine="true"
+            text="Login required"
+            fontSize="21"
+            textColor="@theme/color/newpipe_text" />
+
+        <brls:ProgressSpinner
+            id="subscriptions/spinner"
+            width="22"
+            height="22"
+            marginLeft="12"
+            visibility="gone" />
+    </brls:Box>
+
+    <brls:Label
+        id="subscriptions/body"
+        width="auto"
+        height="auto"
+        maxHeight="44"
+        marginTop="4"
+        lineHeight="1.35"
+        text="SUBLogin required"
+        fontSize="14"
+        textColor="@theme/color/newpipe_text_dim" />
+
+    <brls:Rectangle
+        width="auto"
+        height="1"
+        marginTop="10"
+        marginBottom="14"
+        color="@theme/color/newpipe_divider" />
+
+    <PagingScrollingFrame
+        id="subscriptions/scroll"
+        width="auto"
+        grow="1.0">
+
+        <brls:Box
+            width="auto"
+            height="auto"
+            axis="column">
+
+            <StreamGrid
+                id="subscriptions/grid"
+                width="auto"
+                height="auto" />
+
+            <brls:Label
+                id="subscriptions/more"
+                width="auto"
+                height="24"
+                marginBottom="12"
+                singleLine="true"
+                horizontalAlign="center"
+                fontSize="13"
+                textColor="@theme/color/newpipe_text_faint"
+                visibility="gone" />
+        </brls:Box>
+
+    </PagingScrollingFrame>
+
+</brls:Box>
