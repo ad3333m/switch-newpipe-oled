@@ -1,5 +1,7 @@
 #include "view/stream_grid.hpp"
 
+#include <algorithm>
+
 #include "newpipe/i18n.hpp"
 #include "newpipe/log.hpp"
 #include "view/stream_card.hpp"
@@ -7,6 +9,12 @@
 namespace {
 // Four cards fit the 1280x720 design space at a readable card size.
 constexpr size_t kGridColumns = 4;
+
+// Each card in an appended page starts a little after the one before it. The
+// step count is capped so the tail of a large page is not still waiting to
+// appear seconds after the rest of it landed.
+constexpr int kStaggerStepMs = 28;
+constexpr size_t kMaxStaggerSteps = 11;
 }  // namespace
 
 StreamGrid::StreamGrid() {
@@ -29,15 +37,16 @@ void StreamGrid::appendItems(const std::vector<newpipe::StreamItem>& items) {
     }
 
     this->items_.reserve(this->items_.size() + items.size());
+    size_t positionInPage = 0;
     for (const auto& item : items) {
         this->items_.push_back(item);
-        this->addCard(this->items_.size() - 1);
+        this->addCard(this->items_.size() - 1, positionInPage++);
     }
 
     newpipe::logf("grid: append=%zu total=%zu", items.size(), this->items_.size());
 }
 
-void StreamGrid::addCard(size_t index) {
+void StreamGrid::addCard(size_t index, size_t positionInPage) {
     if (!this->trailingRow_ || this->trailingRowCount_ >= kGridColumns) {
         auto* row = new brls::Box(brls::Axis::ROW);
         row->setMarginBottom(10);
@@ -67,4 +76,7 @@ void StreamGrid::addCard(size_t index) {
 
     this->trailingRow_->addView(card);
     this->trailingRowCount_++;
+
+    card->playEntrance(
+        static_cast<int>(std::min(positionInPage, kMaxStaggerSteps)) * kStaggerStepMs);
 }

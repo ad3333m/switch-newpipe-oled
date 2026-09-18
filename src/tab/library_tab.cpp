@@ -5,6 +5,7 @@
 #include "newpipe/library_store.hpp"
 #include "newpipe/log.hpp"
 #include "newpipe/playback_launcher.hpp"
+#include "view/fade.hpp"
 #include "view/tab_focus.hpp"
 
 LibraryTab::LibraryTab() {
@@ -78,7 +79,7 @@ void LibraryTab::refresh() {
         }
     }
     if (spinner) {
-        spinner->setVisibility(brls::Visibility::GONE);
+        newpipe::fade_out_gone(spinner);
     }
 }
 
@@ -106,7 +107,7 @@ void LibraryTab::playStream(const newpipe::StreamItem& item) {
         return;
     }
     if (spinner) {
-        spinner->setVisibility(brls::Visibility::VISIBLE);
+        newpipe::fade_in(spinner);
     }
     newpipe::launch_playback_async(
         alive_,
@@ -115,7 +116,7 @@ void LibraryTab::playStream(const newpipe::StreamItem& item) {
         "library",
         [this](const newpipe::StreamItem& unresolved) {
             if (spinner) {
-                spinner->setVisibility(brls::Visibility::GONE);
+                newpipe::fade_out_gone(spinner);
             }
             openStream(unresolved);
         });

@@ -42,7 +42,7 @@ public:
     static brls::View* create() { return new StreamGrid(); }
 
 private:
-    void addCard(size_t index);
+    void addCard(size_t index, size_t positionInPage);
 
     std::vector<newpipe::StreamItem> items_;
     brls::Box* trailingRow_ = nullptr;

@@ -6,6 +6,7 @@
 #include "newpipe/library_store.hpp"
 #include "newpipe/log.hpp"
 #include "newpipe/playback_launcher.hpp"
+#include "view/fade.hpp"
 
 StreamDetailActivity::StreamDetailActivity(newpipe::StreamItem item)
     : item_(std::move(item)) {
@@ -46,7 +47,11 @@ void StreamDetailActivity::onContentAvailable() {
 void StreamDetailActivity::setBusy(bool busy) {
     this->busy_ = busy;
     if (this->spinner) {
-        this->spinner->setVisibility(busy ? brls::Visibility::VISIBLE : brls::Visibility::GONE);
+        if (busy) {
+            newpipe::fade_in(this->spinner);
+        } else {
+            newpipe::fade_out_gone(this->spinner);
+        }
     }
 }
 

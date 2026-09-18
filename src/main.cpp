@@ -97,10 +97,10 @@ void configure_theme() {
     light.addColor("color/grey_2", nvgRGB(235, 236, 238));
     light.addColor("color/grey_3", nvgRGBA(200, 200, 200, 16));
 
-    // 160 was too narrow for the tab labels: they wrapped down the sidebar a
-    // syllable per line in Korean and mid-word in English. 180 fits the longest
-    // label in either language on one line at the tab font size.
-    brls::getStyle().addMetric("brls/tab_frame/sidebar_width", 180);
+    // The sidebar is icon-only now, so it only has to fit a 38px icon plus the
+    // active-tab accent bar and its margins - the label width that forced 180
+    // is no longer a constraint.
+    brls::getStyle().addMetric("brls/tab_frame/sidebar_width", 100);
 }
 
 void register_views() {

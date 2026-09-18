@@ -13,11 +13,10 @@
                 tabItemActiveTextColor="@theme/color/newpipe"
                 defaultTab="0"
                 sidebarPosition="left"
-                sidebarWidth="180">
+                sidebarWidth="100">
 
             <Tab
                     label="@i18n/app/home"
-                    fontSize="17"
                     icon="@res/svg/home.svg"
                     iconActivate="@res/svg/home_active.svg">
                 <HomeTab/>
@@ -25,7 +24,6 @@
 
             <Tab
                     label="@i18n/app/search"
-                    fontSize="17"
                     icon="@res/svg/search.svg"
                     iconActivate="@res/svg/search_active.svg">
                 <SearchTab/>
@@ -33,7 +31,6 @@
 
             <Tab
                     label="@i18n/app/subscriptions"
-                    fontSize="17"
                     icon="@res/svg/subscriptions.svg"
                     iconActivate="@res/svg/subscriptions_active.svg">
                 <SubscriptionsTab/>
@@ -41,7 +38,6 @@
 
             <Tab
                     label="@i18n/app/library"
-                    fontSize="17"
                     icon="@res/svg/library.svg"
                     iconActivate="@res/svg/library_active.svg">
                 <LibraryTab/>
@@ -49,7 +45,6 @@
 
             <Tab
                     label="@i18n/app/settings"
-                    fontSize="17"
                     icon="@res/svg/settings.svg"
                     iconActivate="@res/svg/settings_active.svg">
                 <SettingsTab/>

@@ -41,9 +41,24 @@ only the finished result comes back to the UI.
   which frees the row under it for views and upload date.
 - The thumbnail keeps its 16:9 slot open before the image arrives, so rows stop
   jumping around while a feed loads in.
-- Sidebar tab labels no longer wrap one syllable per line.
+- The sidebar is icon-only — no names under the icons — so it is a narrow strip
+  of 100px instead of 180, and the feed gets the width back.
 - The comment list had a line-height bug that spaced every comment apart by
   hundreds of pixels; comments are now readable cards.
+
+### Things move
+
+Nothing in the old UI animated except the focus highlight; everything else cut
+straight from one state to the next.
+
+- Cards fade and rise into place, staggered behind each other, so an appended
+  page rolls in instead of appearing all at once.
+- The focused card lifts off the grid.
+- Thumbnails ease in as they arrive rather than popping into a grey hole.
+- Switching tabs fades the incoming content, and the sidebar's accent bar and
+  active icon fade with it.
+- Spinners and the "loading more" footer fade in and out instead of blinking
+  into existence for a frame.
 
 ### Tuned for the OLED panel
 
@@ -177,6 +192,8 @@ make host
 | `src/view/stream_card.cpp` | Card contents, title splitting, duration badge |
 | `src/view/stream_grid.cpp` | The shared, append-only card grid |
 | `src/view/paging_scrolling_frame.cpp` | Asks for the next page before the bottom |
+| `src/view/fade.hpp` | The fade-in / fade-out helper the spinners use |
+| `src/view/auto_tab_frame.cpp` | Sidebar item template and the tab-switch fade |
 | `src/common/async_runner.cpp` | The worker thread every network call runs on |
 | `src/main.cpp` | Theme colours and sidebar metrics |
 

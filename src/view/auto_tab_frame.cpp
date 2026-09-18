@@ -25,6 +25,13 @@
 #include "view/svg_image.hpp"
 #include "view/button_refresh.hpp"
 
+namespace {
+// Sidebar and tab transition timings, in milliseconds.
+constexpr float kSidebarAccentFadeMs = 130.0f;
+constexpr float kSidebarIconFadeMs = 160.0f;
+constexpr float kTabContentFadeMs = 180.0f;
+}  // namespace
+
 /**
  * auto tab frame
  */
@@ -335,6 +342,10 @@ void AutoTabFrame::setTabAttachedView(brls::View* newContent) {
     }
     newContent->setGrow(1.0f);
     this->addView(newContent);  // addView calls willAppear
+    // Tabs used to pop in fully drawn. Fading the incoming content makes
+    // switching read as a transition rather than a cut.
+    newContent->hide([]() {}, false, 0.0f);
+    newContent->show([]() {}, true, kTabContentFadeMs);
     this->activeTab = newContent;
     // onHide will be called
     auto v = dynamic_cast<AttachedView*>(this->activeTab);
@@ -579,12 +590,13 @@ const std::string autoSidebarItemXML = R"xml(
                 wireframe="false"
                 visibility="gone"
                 id="autoSidebar/item_icon"
-                width="34"
-                height="34"/>
+                width="38"
+                height="38"/>
 
             <brls:Label
                 wireframe="false"
                 id="autoSidebar/item_label"
+                visibility="gone"
                 width="auto"
                 height="auto"
                 fontSize="22"
@@ -830,8 +842,13 @@ void AutoSidebarItem::setActive(bool active) {
 
     if (active) {
         this->activeEvent.fire(this);
-        if (this->tabStyle == AutoTabBarStyle::ACCENT || this->tabStyle == AutoTabBarStyle::INLINE )
+        if (this->tabStyle == AutoTabBarStyle::ACCENT || this->tabStyle == AutoTabBarStyle::INLINE ) {
             this->accent->setVisibility(brls::Visibility::VISIBLE);
+            // hide(no animation) then show(animated) is how borealis drives a
+            // fade: hide() only arms the hidden flag show() needs.
+            this->accent->hide([]() {}, false, 0.0f);
+            this->accent->show([]() {}, true, kSidebarAccentFadeMs);
+        }
         else if (this->tabStyle == AutoTabBarStyle::PLAIN) {
             this->setBackgroundColor(this->tabItemActiveBackgroundColor);
         }
@@ -843,6 +860,11 @@ void AutoSidebarItem::setActive(bool active) {
                 this->icon->setImageFromSVGFile(this->iconActivate);
             else if (!this->iconDefault.empty())
                 this->icon->setImageFromSVGFile(this->iconDefault);
+
+            // Now that the labels are gone the icon carries the whole tab, so
+            // the swap to its active variant gets a fade of its own.
+            this->icon->hide([]() {}, false, 0.0f);
+            this->icon->show([]() {}, true, kSidebarIconFadeMs);
         }
     } else {
         if (this->tabStyle == AutoTabBarStyle::ACCENT || this->tabStyle == AutoTabBarStyle::INLINE)

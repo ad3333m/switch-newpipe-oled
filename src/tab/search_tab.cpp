@@ -4,6 +4,7 @@
 #include "newpipe/i18n.hpp"
 #include "newpipe/log.hpp"
 #include "newpipe/playback_launcher.hpp"
+#include "view/fade.hpp"
 #include "view/tab_focus.hpp"
 
 SearchTab::SearchTab() {
@@ -45,7 +46,11 @@ void SearchTab::onCreate() {
 void SearchTab::setBusy(bool busy) {
     loading_ = busy;
     if (spinner) {
-        spinner->setVisibility(busy ? brls::Visibility::VISIBLE : brls::Visibility::GONE);
+        if (busy) {
+            newpipe::fade_in(spinner);
+        } else {
+            newpipe::fade_out_gone(spinner);
+        }
     }
 }
 
@@ -60,7 +65,7 @@ void SearchTab::clearResults() {
         scrollFrame->resetPagingTrigger();
     }
     if (moreLabel) {
-        moreLabel->setVisibility(brls::Visibility::GONE);
+        newpipe::fade_out_gone(moreLabel);
     }
 }
 
@@ -134,7 +139,7 @@ bool SearchTab::requestMorePages() {
     loadingMore_ = true;
     if (moreLabel) {
         moreLabel->setText(newpipe::tr("common/loading_more"));
-        moreLabel->setVisibility(brls::Visibility::VISIBLE);
+        newpipe::fade_in(moreLabel);
     }
 
     const newpipe::Continuation continuation = continuation_;
@@ -159,7 +164,7 @@ void SearchTab::applyPage(const PageResult& result) {
         newpipe::logf("search: no further pages error=%s", result.error.c_str());
         continuation_ = {};
         if (moreLabel) {
-            moreLabel->setVisibility(brls::Visibility::GONE);
+            newpipe::fade_out_gone(moreLabel);
         }
         return;
     }
@@ -169,7 +174,7 @@ void SearchTab::applyPage(const PageResult& result) {
         grid->appendItems(result.page->items);
     }
     if (moreLabel) {
-        moreLabel->setVisibility(brls::Visibility::GONE);
+        newpipe::fade_out_gone(moreLabel);
     }
     if (scrollFrame) {
         scrollFrame->resetPagingTrigger();
