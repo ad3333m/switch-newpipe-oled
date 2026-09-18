@@ -154,9 +154,9 @@ inside Docker. Two ways to get one:
 ### GitHub Actions (no local toolchain)
 
 Push this repo to GitHub. `.github/workflows/build.yml` builds on every push and
-uploads `switch_newpipe.nro` as a workflow artifact. The first run is slow -
-ffmpeg and mpv are compiled from source for the Switch, which takes well over an
-hour - and every run after that restores them from the Actions cache in seconds.
+uploads `switch_newpipe.nro` as a workflow artifact. The first run takes about
+15 minutes because ffmpeg and mpv are compiled from source for the Switch; every
+run after that restores them from the Actions cache and finishes in a few.
 
 ### Locally (Linux/macOS, or Windows via WSL)
 
@@ -192,7 +192,7 @@ make host
 | `src/view/stream_card.cpp` | Card contents, title splitting, duration badge |
 | `src/view/stream_grid.cpp` | The shared, append-only card grid |
 | `src/view/paging_scrolling_frame.cpp` | Asks for the next page before the bottom |
-| `src/view/fade.hpp` | The fade-in / fade-out helper the spinners use |
+| `include/view/fade.hpp` | The fade-in / fade-out helper the spinners use |
 | `src/view/auto_tab_frame.cpp` | Sidebar item template and the tab-switch fade |
 | `src/common/async_runner.cpp` | The worker thread every network call runs on |
 | `src/main.cpp` | Theme colours and sidebar metrics |
