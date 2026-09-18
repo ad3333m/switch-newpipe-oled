@@ -81,7 +81,7 @@ std::optional<std::string> HttpsHttpClient::get(
     curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
     curl_easy_setopt(curl, CURLOPT_MAXREDIRS, 10L);
     curl_easy_setopt(curl, CURLOPT_USERAGENT,
-                     "Mozilla/5.0 (Nintendo Switch; Switch-NewPipe)");
+                     "Mozilla/5.0 (Nintendo Switch; SwitchTube)");
     curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
     curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L);
     curl_easy_setopt(curl, CURLOPT_CONNECTTIMEOUT, 15L);
@@ -164,7 +164,7 @@ std::optional<std::string> HttpsHttpClient::post(
     curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
     curl_easy_setopt(curl, CURLOPT_MAXREDIRS, 10L);
     curl_easy_setopt(curl, CURLOPT_USERAGENT,
-                     "Mozilla/5.0 (Nintendo Switch; Switch-NewPipe)");
+                     "Mozilla/5.0 (Nintendo Switch; SwitchTube)");
     curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
     curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L);
     curl_easy_setopt(curl, CURLOPT_CONNECTTIMEOUT, 15L);

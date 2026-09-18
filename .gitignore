@@ -51,3 +51,6 @@ reference/
 # OS
 .DS_Store
 Thumbs.db
+
+# Locally downloaded CI artifacts
+dist/

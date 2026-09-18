@@ -1,16 +1,16 @@
-# Switch-NewPipe
+# SwitchTube
 
 ![preview2](./docs/preview2.jpg)
 ![preview1](./docs/preview1.jpg)
 
-Switch-NewPipe는 NewPipe 스타일을 참고한 닌텐도 스위치 CFW 홈브류 YouTube 앱이다.  
+SwitchTube는 NewPipe 스타일을 참고한 닌텐도 스위치 CFW 홈브류 YouTube 앱이다.  
 이 프로젝트의 목표는 Android NewPipe를 그대로 포팅하는 것이 아니라, 스위치에서 실제로 안정적으로 동작하는 네이티브 MVP를 먼저 만드는 것이다.
 
 [English README](./README.md)
 
 ## 현재 상태
 
-Switch-NewPipe는 단순한 UI 스캐폴드 단계를 넘겼다. 현재 Borealis 기반 스위치 UI, 실제 YouTube 데이터 조회, 실기 재생, 로그 저장, 설정 persistence, 쿠키 import 기반 로그인 흐름까지 연결되어 있다.
+SwitchTube는 단순한 UI 스캐폴드 단계를 넘겼다. 현재 Borealis 기반 스위치 UI, 실제 YouTube 데이터 조회, 실기 재생, 로그 저장, 설정 persistence, 쿠키 import 기반 로그인 흐름까지 연결되어 있다.
 
 현재 구현된 것:
 

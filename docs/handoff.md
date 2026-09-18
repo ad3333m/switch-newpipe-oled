@@ -18,7 +18,7 @@ roadmap Phase 2의 `좌우 seek 복구` 항목. `좌 / 우` 10초, `LB / RB` 60�
 - OSD 진행 바에 버퍼 구간을 밝은 회색으로 같이 그린다. 이동 직후에는 mpv가 잠깐
   이전 `time-pos`를 돌려주므로 600ms 동안 OSD 시간을 요청 위치에 고정한다.
 - 검증
-  - `./build.sh` 통과. `switch_newpipe.nro` 빌드까지 확인했고 앱 소스 경고는 없다
+  - `./build.sh` 통과. `switchtube.nro` 빌드까지 확인했고 앱 소스 경고는 없다
   - `src/switch/switch_player.cpp`는 switch/SDL/mpv 헤더가 필요해서 호스트
     `g++ -fsyntax-only`로는 볼 수 없다. 이 파일 변경은 `./build.sh`가 유일한 정적 검증
     경로다
@@ -81,7 +81,7 @@ GitHub issue #3 / #4 대응. 둘 다 UI 레이어 버그다.
 
 ## 현재 상태 (2026-04-06)
 
-`Switch-NewPipe`는 이제 단순 스캐폴드가 아니라, 실제 YouTube 데이터 탐색과 실기 재생 루프까지 연결된 Switch MVP다.
+`SwitchTube`는 이제 단순 스캐폴드가 아니라, 실제 YouTube 데이터 탐색과 실기 재생 루프까지 연결된 Switch MVP다.
 
 ## 지금까지 구현한 것
 

@@ -12,12 +12,12 @@ set(LIBROMFS_PREBUILT_GENERATOR
 include(${BOREALIS_LIBRARY}/cmake/commonOption.cmake)
 include(${BOREALIS_LIBRARY}/cmake/toolchain.cmake)
 
-project(switch_newpipe
+project(switchtube
     VERSION 0.0.5
     LANGUAGES C CXX
 )
 
-set(PROJECT_AUTHOR "switch-newpipe")
+set(PROJECT_AUTHOR "SwitchTube")
 set(PROJECT_ICON ${CMAKE_CURRENT_SOURCE_DIR}/resources/icon/icon.jpg)
 set(PROJECT_RESOURCES ${CMAKE_CURRENT_SOURCE_DIR}/resources)
 
@@ -109,7 +109,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
 if (PLATFORM_SWITCH)
     add_custom_target(${PROJECT_NAME}.nro
         DEPENDS ${PROJECT_NAME}
-        COMMAND ${NX_NACPTOOL_EXE} --create "Switch-NewPipe" "${PROJECT_AUTHOR}" "${PROJECT_VERSION}" ${PROJECT_NAME}.nacp
+        COMMAND ${NX_NACPTOOL_EXE} --create "SwitchTube" "${PROJECT_AUTHOR}" "${PROJECT_VERSION}" ${PROJECT_NAME}.nacp
         COMMAND ${CMAKE_COMMAND} -E copy_directory ${PROJECT_RESOURCES} ${CMAKE_BINARY_DIR}/resources
         COMMAND ${NX_ELF2NRO_EXE} ${PROJECT_NAME}.elf ${PROJECT_NAME}.nro
             --icon=${PROJECT_ICON}

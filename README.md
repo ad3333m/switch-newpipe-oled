@@ -1,6 +1,8 @@
 <p align="center">
-  <img src="./docs/banner.png" alt="Switch-NewPipe" width="848"/>
+  <img src="./resources/icon/icon.jpg" alt="SwitchTube" width="128"/>
 </p>
+
+<h1 align="center">SwitchTube</h1>
 
 <p align="center">
   <strong>A free, open-source YouTube client for Nintendo Switch homebrew.</strong><br>
@@ -11,10 +13,14 @@
 
 ## About this fork
 
-This is [mirusu400/switch-newpipe](https://github.com/mirusu400/switch-newpipe) with the
-interface reworked for the **Switch OLED**. Nothing about what the app *does* has
-changed: same tabs, same controls, same playback pipeline, same data files, same
-`.nro`. What changed is how it looks and how it feels while you use it.
+**SwitchTube** is [mirusu400/switch-newpipe](https://github.com/mirusu400/switch-newpipe)
+with the interface reworked for the **Switch OLED**. Nothing about what the app
+*does* has changed: same tabs, same controls, same playback pipeline, same data
+files. What changed is the name, the icon, and how it looks and feels to use.
+
+Its save files keep the old `switch_newpipe_*` names on the SD card on purpose,
+so an existing install's settings, login session and watch history carry over
+untouched.
 
 ### Endless feeds
 
@@ -72,7 +78,7 @@ same palette instead of its default grey.
 
 1. Make sure your Switch has **Atmosphere CFW** with the Homebrew Menu
 2. Build the `.nro` (see below) or download it from the Actions artifacts
-3. Copy it to `sdmc:/switch/switch_newpipe.nro`
+3. Copy it to `sdmc:/switch/switchtube.nro`
 4. Launch from the Homebrew Menu
 
 ## What You Can Do
@@ -111,7 +117,7 @@ been downloaded; the OSD progress bar shows that range and the reachable limit.
 
 ## Login (Optional)
 
-Switch-NewPipe uses cookie import for YouTube login. No OAuth or Google sign-in required.
+SwitchTube uses cookie import for YouTube login. No OAuth or Google sign-in required.
 
 **How to set up:**
 
@@ -154,7 +160,7 @@ inside Docker. Two ways to get one:
 ### GitHub Actions (no local toolchain)
 
 Push this repo to GitHub. `.github/workflows/build.yml` builds on every push and
-uploads `switch_newpipe.nro` as a workflow artifact. The first run takes about
+uploads `switchtube.nro` as a workflow artifact. The first run takes about
 15 minutes because ffmpeg and mpv are compiled from source for the Switch; every
 run after that restores them from the Actions cache and finishes in a few.
 
@@ -170,7 +176,7 @@ cd switch-newpipe-oled
 ./build.sh --clean      # start over
 ```
 
-Output: `cmake-build-switch/switch_newpipe.nro`
+Output: `cmake-build-switch/switchtube.nro`
 
 <details>
 <summary>Host validation tools (for development)</summary>

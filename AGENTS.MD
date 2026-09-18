@@ -2,7 +2,7 @@
 
 ## 목적
 
-**Switch-NewPipe** — 닌텐도 스위치 CFW 홈브류로 구동되는 YouTube 앱. 기준 레퍼런스는 `reference/NewPipe`이며, 최우선 목표는 `실제 스위치 실기에서 안정적으로 굴러가는 MVP`다.
+**SwitchTube** — 닌텐도 스위치 CFW 홈브류로 구동되는 YouTube 앱. 기준 레퍼런스는 `reference/NewPipe`이며, 최우선 목표는 `실제 스위치 실기에서 안정적으로 굴러가는 MVP`다.
 
 ## 현재 상태
 

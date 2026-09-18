@@ -41,13 +41,13 @@ jobs:
       - name: Collect artifacts
         run: |
           mkdir -p dist
-          cp cmake-build-switch/switch_newpipe.nro dist/switch_newpipe.nro
-          sha256sum dist/switch_newpipe.nro > dist/SHA256SUMS.txt
+          cp cmake-build-switch/switchtube.nro dist/switchtube.nro
+          sha256sum dist/switchtube.nro > dist/SHA256SUMS.txt
 
       - name: Upload NRO
         uses: actions/upload-artifact@v4
         with:
-          name: switch_newpipe-nro
+          name: switchtube-nro
           path: |
-            dist/switch_newpipe.nro
+            dist/switchtube.nro
             dist/SHA256SUMS.txt

@@ -39,7 +39,7 @@ namespace newpipe {
 namespace {
 
 constexpr const char* kUserAgent =
-    "Mozilla/5.0 (Nintendo Switch; Switch-NewPipe)";
+    "Mozilla/5.0 (Nintendo Switch; SwitchTube)";
 constexpr const char* kDownloadUserAgent =
     "com.google.android.youtube/20.10.38 (Linux; U; Android 11) gzip";
 constexpr const char* kUmpDownloadUserAgent =
@@ -1879,7 +1879,7 @@ private:
         int width = mode == AppletOperationMode_Console ? 1920 : 1280;
         int height = mode == AppletOperationMode_Console ? 1080 : 720;
 
-        window_ = SDL_CreateWindow("Switch-NewPipe Player", 0, 0, width, height, SDL_WINDOW_SHOWN);
+        window_ = SDL_CreateWindow("SwitchTube Player", 0, 0, width, height, SDL_WINDOW_SHOWN);
         if (!window_) {
             error = std::string("SDL_CreateWindow failed: ") + SDL_GetError();
             return false;
