@@ -70,6 +70,19 @@ void configure_theme() {
     dark.addColor("brls/sidebar/separator", nvgRGB(34, 34, 39));
     dark.addColor("brls/spinner/bar_color", nvgRGBA(200, 200, 208, 90));
 
+    // Settings cells, buttons and sliders ship in borealis' mint-green accent,
+    // which is the one thing on screen that does not belong to this app.
+    dark.addColor("brls/list/listItem_value_color", nvgRGB(244, 67, 54));
+    dark.addColor("brls/button/primary_enabled_background", nvgRGB(244, 67, 54));
+    dark.addColor("brls/button/primary_enabled_text", nvgRGB(255, 255, 255));
+    dark.addColor("brls/button/default_enabled_background", nvgRGB(30, 30, 34));
+    dark.addColor("brls/button/highlight_enabled_text", nvgRGB(255, 138, 128));
+    dark.addColor("brls/button/highlight_disabled_text", nvgRGB(150, 90, 86));
+    dark.addColor("brls/button/enabled_border_color", nvgRGB(70, 70, 78));
+    dark.addColor("brls/button/disabled_border_color", nvgRGB(50, 50, 56));
+    dark.addColor("brls/slider/line_filled", nvgRGB(244, 67, 54));
+    dark.addColor("brls/slider/line_empty", nvgRGB(60, 60, 66));
+
     brls::Theme& light = brls::Theme::getLightTheme();
 
     light.addColor("color/newpipe", nvgRGB(216, 67, 21));

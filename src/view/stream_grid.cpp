@@ -10,9 +10,10 @@ constexpr size_t kGridColumns = 4;
 }  // namespace
 
 StreamGrid::StreamGrid() {
+    // Width and height stay at yoga's auto default (the XML says so explicitly
+    // too); setWidth(View::AUTO) would not work here anyway, since AUTO is NaN
+    // and borealis compares it with ==.
     this->setAxis(brls::Axis::COLUMN);
-    this->setWidth(brls::View::AUTO);
-    this->setHeight(brls::View::AUTO);
 }
 
 void StreamGrid::reset() {
