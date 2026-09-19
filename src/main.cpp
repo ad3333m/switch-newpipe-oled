@@ -127,7 +127,10 @@ bool run_borealis_ui() {
 
     newpipe::log_line("main: createWindow");
     brls::Application::createWindow(newpipe::tr("app/title"));
-    brls::Application::setGlobalQuit(false);
+    // With the B-press exit confirmation gone, + is the deliberate way out.
+    // registerExitAction() quits straight away, so this adds an exit route
+    // without adding a prompt back.
+    brls::Application::setGlobalQuit(true);
     configure_theme();
 
     newpipe::log_line("main: register XML views");

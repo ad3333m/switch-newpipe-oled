@@ -170,16 +170,11 @@ void AppletFrame::popContentView(std::function<void(void)> cb)
 {
     if (contentViewStack.size() <= 1)
     {
-        if (!Application::popActivity(TransitionAnimation::FADE, cb))
-        {
-#ifndef IOS // Do not close the app in iOS
-            auto dialog = new brls::Dialog("hints/exit_hint"_i18n);
-            dialog->addButton("hints/cancel"_i18n, []() {});
-            dialog->addButton("hints/ok"_i18n, []()
-                { Application::quit(); });
-            dialog->open();
-#endif
-        }
+        // Upstream pops a "You will exit this app" confirmation here when there
+        // is nothing left to go back to. B is the back button everywhere else
+        // in this app, so being asked to quit for pressing it on a tab was just
+        // a trap; the press is ignored instead. Quitting is + or HOME.
+        Application::popActivity(TransitionAnimation::FADE, cb);
         return;
     }
 
