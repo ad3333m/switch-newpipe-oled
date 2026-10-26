@@ -64,6 +64,7 @@ AutoTabFrame::AutoTabFrame() {
                                          {"top", AutoTabBarPosition::TOP},
                                          {"right", AutoTabBarPosition::RIGHT},
                                          {"left", AutoTabBarPosition::LEFT},
+                                         {"bottom", AutoTabBarPosition::BOTTOM},
                                      });
 
     // this only works with "sidebarPosition == left"
@@ -129,6 +130,14 @@ void AutoTabFrame::setSideBarPosition(AutoTabBarPosition position) {
     this->tabBarPosition = position;
     switch (position) {
         case AutoTabBarPosition::TOP:
+            this->setAxis(brls::Axis::COLUMN);
+            this->setDirection(brls::Direction::LEFT_TO_RIGHT);
+            this->setHorizontalMode(true);
+            this->sidebar->setWidthPercentage(100);
+            break;
+        case AutoTabBarPosition::BOTTOM:
+            // Same horizontal bar as TOP; setTabAttachedView inserts the content
+            // ahead of the sidebar so the bar lands at the bottom of the column.
             this->setAxis(brls::Axis::COLUMN);
             this->setDirection(brls::Direction::LEFT_TO_RIGHT);
             this->setHorizontalMode(true);
@@ -341,7 +350,13 @@ void AutoTabFrame::setTabAttachedView(brls::View* newContent) {
         return;
     }
     newContent->setGrow(1.0f);
-    this->addView(newContent);  // addView calls willAppear
+    // For a bottom bar the sidebar must stay last in the column, so content is
+    // inserted ahead of it; every other position appends after the sidebar.
+    if (this->tabBarPosition == AutoTabBarPosition::BOTTOM) {
+        this->addView(newContent, 0);  // addView calls willAppear
+    } else {
+        this->addView(newContent);  // addView calls willAppear
+    }
     // Tabs used to pop in fully drawn. Fading the incoming content makes
     // switching read as a transition rather than a cut.
     newContent->hide([]() {}, false, 0.0f);
@@ -420,9 +435,12 @@ void AutoTabFrame::setHorizontalMode(bool value) {
     if (value) {
         this->sidebar->setPadding(8, 20, 8, 20);
         this->sidebar->setAxis(brls::Axis::ROW);
+        // Spread the items across the bar instead of bunching them at the left.
+        this->sidebar->setJustifyContent(brls::JustifyContent::SPACE_EVENLY);
     } else {
         this->sidebar->setPadding(32, 10, 47, 10);
         this->sidebar->setAxis(brls::Axis::COLUMN);
+        this->sidebar->setJustifyContent(brls::JustifyContent::FLEX_START);
     }
 
     this->invalidate();

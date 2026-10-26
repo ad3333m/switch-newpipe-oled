@@ -36,8 +36,9 @@ struct FeedPreset {
     bool allow_short_videos = false;
 };
 
-constexpr std::array<FeedPreset, 4> kFeedPresets = {{
+constexpr std::array<FeedPreset, 5> kFeedPresets = {{
     {"recommended", "추천", "best videos today", false},
+    {"shorts", "Shorts", "#shorts", true},
     {"live", "라이브", "live now", true},
     {"music", "음악", "music video", false},
     {"gaming", "게임", "gaming trailer", false},

@@ -2,6 +2,7 @@
   "app": {
     "title": "YouTube",
     "home": "Home",
+    "shorts": "Shorts",
     "search": "Search",
     "subscriptions": "Subscriptions",
     "library": "Library",

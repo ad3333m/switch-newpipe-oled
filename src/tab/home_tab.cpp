@@ -8,15 +8,17 @@
 #include "view/fade.hpp"
 #include "view/tab_focus.hpp"
 
-HomeTab::HomeTab() {
+HomeTab::HomeTab(std::string fixedKiosk) : fixedKiosk_(std::move(fixedKiosk)) {
     this->inflateFromXMLRes("xml/tabs/home.xml");
     newpipe::log_line("home: construct");
 
     kiosks_ = service_->list_kiosks();
     newpipe::logf("home: kiosks=%zu", kiosks_.size());
-    const newpipe::AppSettings settings = newpipe::SettingsStore::instance().settings();
+    const std::string wanted = fixedKiosk_.empty()
+        ? newpipe::SettingsStore::instance().settings().home_kiosk
+        : fixedKiosk_;
     for (size_t i = 0; i < kiosks_.size(); i++) {
-        if (kiosks_[i].id == settings.home_kiosk) {
+        if (kiosks_[i].id == wanted) {
             kioskIndex_ = i;
             break;
         }
@@ -217,6 +219,10 @@ void HomeTab::scheduleLoadHome(long delay_ms) {
 
 void HomeTab::cycleKiosk() {
     if (!allowInitialInput()) {
+        return;
+    }
+    // A fixed-feed tab (Shorts) has nothing to cycle through.
+    if (!fixedKiosk_.empty()) {
         return;
     }
     if (kiosks_.empty()) {

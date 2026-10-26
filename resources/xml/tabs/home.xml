@@ -50,10 +50,17 @@
         width="auto"
         grow="1.0">
 
+        <!--
+            paddingTop gives the first row headroom: at scroll offset 0 a
+            focused card lifts 5px and draws a highlight border, both of which
+            the scroll viewport's top edge would otherwise clip - which read as
+            the top row being unselectable.
+        -->
         <brls:Box
             width="auto"
             height="auto"
-            axis="column">
+            axis="column"
+            paddingTop="10">
 
             <StreamGrid
                 id="home/grid"

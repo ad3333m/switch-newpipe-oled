@@ -18,11 +18,18 @@
 
 class HomeTab : public AttachedView {
 public:
-    HomeTab();
+    HomeTab() : HomeTab(std::string()) {}
 
     void onCreate() override;
 
     static brls::View* create() { return new HomeTab(); }
+
+protected:
+    // A non-empty kiosk id locks the tab to that feed (e.g. the Shorts tab) and
+    // turns off category cycling. Empty means the normal, cycleable Home tab.
+    explicit HomeTab(std::string fixedKiosk);
+
+    std::string fixedKiosk_;
 
 private:
     struct FeedResult {

@@ -6,17 +6,21 @@
 namespace {
 
 size_t startup_tab_index(const std::string& tab_id) {
-    if (tab_id == "search") {
+    // Tab order: home(0) shorts(1) search(2) subscriptions(3) library(4) settings(5)
+    if (tab_id == "shorts") {
         return 1;
     }
-    if (tab_id == "subscriptions") {
+    if (tab_id == "search") {
         return 2;
     }
-    if (tab_id == "library") {
+    if (tab_id == "subscriptions") {
         return 3;
     }
-    if (tab_id == "settings") {
+    if (tab_id == "library") {
         return 4;
+    }
+    if (tab_id == "settings") {
+        return 5;
     }
     return 0;
 }

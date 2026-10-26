@@ -31,7 +31,7 @@ class Rectangle;
 
 typedef std::function<brls::View*(void)> TabViewCreator;
 
-enum class AutoTabBarPosition { TOP, LEFT, RIGHT };
+enum class AutoTabBarPosition { TOP, LEFT, RIGHT, BOTTOM };
 
 enum class AutoTabBarStyle { ACCENT, PLAIN, INLINE, NONE };
 

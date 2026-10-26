@@ -2,6 +2,7 @@
   "app": {
     "title": "YouTube",
     "home": "홈",
+    "shorts": "쇼츠",
     "search": "검색",
     "subscriptions": "구독",
     "library": "라이브러리",

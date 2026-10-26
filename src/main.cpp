@@ -18,6 +18,7 @@
 #include "newpipe/switch_player.hpp"
 #endif
 #include "tab/home_tab.hpp"
+#include "tab/shorts_tab.hpp"
 #include "tab/search_tab.hpp"
 #include "tab/settings_tab.hpp"
 #include "tab/subscriptions_tab.hpp"
@@ -109,6 +110,7 @@ void register_views() {
     brls::Application::registerXMLView("StreamGrid", StreamGrid::create);
     brls::Application::registerXMLView("SVGImage", SVGImage::create);
     brls::Application::registerXMLView("HomeTab", HomeTab::create);
+    brls::Application::registerXMLView("ShortsTab", ShortsTab::create);
     brls::Application::registerXMLView("SearchTab", SearchTab::create);
     brls::Application::registerXMLView("SubscriptionsTab", SubscriptionsTab::create);
     brls::Application::registerXMLView("LibraryTab", LibraryTab::create);
