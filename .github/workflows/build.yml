@@ -41,13 +41,13 @@ jobs:
       - name: Collect artifacts
         run: |
           mkdir -p dist
-          cp cmake-build-switch/switchtube.nro dist/switchtube.nro
-          sha256sum dist/switchtube.nro > dist/SHA256SUMS.txt
+          cp cmake-build-switch/youtube.nro dist/youtube.nro
+          sha256sum dist/youtube.nro > dist/SHA256SUMS.txt
 
       - name: Upload NRO
         uses: actions/upload-artifact@v4
         with:
-          name: switchtube-nro
+          name: youtube-nro
           path: |
-            dist/switchtube.nro
+            dist/youtube.nro
             dist/SHA256SUMS.txt

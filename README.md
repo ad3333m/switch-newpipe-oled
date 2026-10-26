@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="./resources/icon/icon.jpg" alt="SwitchTube" width="128"/>
+  <img src="./resources/icon/icon.jpg" alt="YouTube" width="128"/>
 </p>
 
-<h1 align="center">SwitchTube</h1>
+<h1 align="center">YouTube</h1>
 
 <p align="center">
   <strong>A free, open-source YouTube client for Nintendo Switch homebrew.</strong><br>
@@ -13,7 +13,7 @@
 
 ## About this fork
 
-**SwitchTube** is [mirusu400/switch-newpipe](https://github.com/mirusu400/switch-newpipe)
+**YouTube** is [mirusu400/switch-newpipe](https://github.com/mirusu400/switch-newpipe)
 with the interface reworked for the **Switch OLED**. Nothing about what the app
 *does* has changed: same tabs, same controls, same playback pipeline, same data
 files. What changed is the name, the icon, and how it looks and feels to use.
@@ -117,7 +117,7 @@ been downloaded; the OSD progress bar shows that range and the reachable limit.
 
 ## Login (Optional)
 
-SwitchTube uses cookie import for YouTube login. No OAuth or Google sign-in required.
+YouTube uses cookie import for YouTube login. No OAuth or Google sign-in required.
 
 **How to set up:**
 

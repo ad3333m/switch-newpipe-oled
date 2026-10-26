@@ -39,7 +39,7 @@ void configure_theme() {
 
     brls::Theme& dark = brls::Theme::getDarkTheme();
 
-    dark.addColor("color/newpipe", nvgRGB(244, 67, 54));
+    dark.addColor("color/newpipe", nvgRGB(255, 0, 0));
     dark.addColor("color/newpipe_bg", nvgRGB(0, 0, 0));
     dark.addColor("color/newpipe_card", nvgRGB(20, 20, 23));
     dark.addColor("color/newpipe_thumb", nvgRGB(32, 32, 36));
@@ -59,33 +59,33 @@ void configure_theme() {
     dark.addColor("brls/text", nvgRGB(242, 242, 242));
     dark.addColor("brls/text_disabled", nvgRGB(110, 110, 116));
     dark.addColor("brls/backdrop", nvgRGBA(0, 0, 0, 205));
-    dark.addColor("brls/accent", nvgRGB(244, 67, 54));
-    dark.addColor("brls/click_pulse", nvgRGBA(244, 67, 54, 38));
+    dark.addColor("brls/accent", nvgRGB(255, 0, 0));
+    dark.addColor("brls/click_pulse", nvgRGBA(255, 0, 0, 38));
     dark.addColor("brls/highlight/background", nvgRGB(26, 26, 30));
-    dark.addColor("brls/highlight/color1", nvgRGB(244, 67, 54));
-    dark.addColor("brls/highlight/color2", nvgRGB(255, 138, 128));
+    dark.addColor("brls/highlight/color1", nvgRGB(255, 0, 0));
+    dark.addColor("brls/highlight/color2", nvgRGB(255, 82, 82));
     dark.addColor("brls/applet_frame/separator", nvgRGB(38, 38, 43));
     dark.addColor("brls/sidebar/background", nvgRGB(10, 10, 12));
-    dark.addColor("brls/sidebar/active_item", nvgRGB(244, 67, 54));
+    dark.addColor("brls/sidebar/active_item", nvgRGB(255, 0, 0));
     dark.addColor("brls/sidebar/separator", nvgRGB(34, 34, 39));
     dark.addColor("brls/spinner/bar_color", nvgRGBA(200, 200, 208, 90));
 
     // Settings cells, buttons and sliders ship in borealis' mint-green accent,
     // which is the one thing on screen that does not belong to this app.
-    dark.addColor("brls/list/listItem_value_color", nvgRGB(244, 67, 54));
-    dark.addColor("brls/button/primary_enabled_background", nvgRGB(244, 67, 54));
+    dark.addColor("brls/list/listItem_value_color", nvgRGB(255, 0, 0));
+    dark.addColor("brls/button/primary_enabled_background", nvgRGB(255, 0, 0));
     dark.addColor("brls/button/primary_enabled_text", nvgRGB(255, 255, 255));
     dark.addColor("brls/button/default_enabled_background", nvgRGB(30, 30, 34));
-    dark.addColor("brls/button/highlight_enabled_text", nvgRGB(255, 138, 128));
+    dark.addColor("brls/button/highlight_enabled_text", nvgRGB(255, 82, 82));
     dark.addColor("brls/button/highlight_disabled_text", nvgRGB(150, 90, 86));
     dark.addColor("brls/button/enabled_border_color", nvgRGB(70, 70, 78));
     dark.addColor("brls/button/disabled_border_color", nvgRGB(50, 50, 56));
-    dark.addColor("brls/slider/line_filled", nvgRGB(244, 67, 54));
+    dark.addColor("brls/slider/line_filled", nvgRGB(255, 0, 0));
     dark.addColor("brls/slider/line_empty", nvgRGB(60, 60, 66));
 
     brls::Theme& light = brls::Theme::getLightTheme();
 
-    light.addColor("color/newpipe", nvgRGB(216, 67, 21));
+    light.addColor("color/newpipe", nvgRGB(204, 0, 0));
     light.addColor("color/newpipe_bg", nvgRGB(248, 248, 248));
     light.addColor("color/newpipe_card", nvgRGB(255, 255, 255));
     light.addColor("color/newpipe_thumb", nvgRGB(226, 228, 232));

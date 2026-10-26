@@ -40,15 +40,15 @@ jobs:
       - name: Prepare release artifacts
         run: |
           mkdir -p dist
-          cp cmake-build-switch/switchtube.nro dist/switchtube.nro
-          sha256sum dist/switchtube.nro > dist/SHA256SUMS.txt
+          cp cmake-build-switch/youtube.nro dist/youtube.nro
+          sha256sum dist/youtube.nro > dist/SHA256SUMS.txt
 
       - name: Upload workflow artifact
         uses: actions/upload-artifact@v4
         with:
-          name: switchtube-release
+          name: youtube-release
           path: |
-            dist/switchtube.nro
+            dist/youtube.nro
             dist/SHA256SUMS.txt
 
       - name: Upload assets to GitHub Release
@@ -56,7 +56,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            dist/switchtube.nro
+            dist/youtube.nro
             dist/SHA256SUMS.txt
           fail_on_unmatched_files: true
           overwrite_files: true
